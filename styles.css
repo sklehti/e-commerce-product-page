@@ -1,0 +1,262 @@
+/* bacis style */
+p {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* main style */
+nav {
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  background-color: #fff;
+}
+
+.container {
+  padding: 20px 10vw 0 6vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0 4vw;
+}
+
+.nav-titles a {
+  text-decoration: none;
+  color: #000;
+}
+
+.shopping-cart {
+  padding: 0 4vw;
+}
+
+.avatar {
+  height: 40px;
+}
+
+.company-name {
+  font-weight: 700;
+  color: hsl(26, 77%, 61%);
+  text-transform: uppercase;
+  padding-top: 10px;
+}
+
+.product-info-text {
+  line-height: 150%;
+  color: rgb(159, 159, 159);
+}
+
+.new-price {
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.discount {
+  content: "";
+  width: auto;
+  height: auto;
+  background-color: hsl(25, 100%, 94%);
+  border-radius: 5px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 0 10px;
+  color: hsl(26, 100%, 55%);
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(159, 159, 159);
+}
+
+#outer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsl(223, 64%, 98%);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.inner {
+  text-align: center;
+}
+
+.pruduct-quantity {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.minus-button,
+.plus-button {
+  background-color: hsl(223, 64%, 98%);
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 25px;
+  font-weight: 600;
+  color: hsl(26, 100%, 55%);
+}
+
+.add-to-cart-button {
+  width: 100%;
+  margin: 10px 0 100px;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: hsl(26, 100%, 55%);
+  color: hsl(25, 100%, 94%);
+  text-align: center;
+  box-shadow: 0 20px 38px hsl(26, 100%, 89%);
+}
+
+.add-to-cart-button img {
+  filter: brightness(0) saturate(100%) invert(94%) sepia(52%) saturate(446%)
+    hue-rotate(296deg) brightness(100%) contrast(111%);
+  width: 18px;
+  margin: 0 13px -2px 0;
+}
+
+/* mobile view */
+@media only screen and (max-width: 1440px) {
+  .mobile-nav-active {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.8;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .nav-titles {
+    position: absolute;
+    height: 100vh;
+    background-color: #fff;
+    width: 80vw;
+    z-index: 10;
+  }
+
+  .close-button {
+    margin-bottom: 50px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .nav-titles ul {
+    list-style-type: none;
+    padding: 30px 0 0 30vw;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 200%;
+  }
+
+  .nav-titles-unvisible {
+    display: none;
+  }
+
+  .container {
+    padding: 20px 6vw 0 6vw;
+  }
+
+  #toggle-menu {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .toggle-menu-visible {
+    height: 16px;
+  }
+
+  nav hr {
+    visibility: hidden;
+  }
+
+  .avatar {
+    height: 25px;
+  }
+
+  .section-img {
+    padding-top: 60px;
+  }
+
+  .container-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .product-main-img {
+    width: 100%;
+  }
+
+  .previous-arrow button img,
+  .next-arrow button img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10px;
+  }
+
+  .previous-arrow button,
+  .next-arrow button {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .previous-arrow {
+    position: absolute;
+    /* z-index: 5; */
+  }
+
+  .next-arrow {
+    position: absolute;
+    /* z-index: 5; */
+    right: 0px;
+  }
+
+  .container-product-info {
+    padding: 0 6vw;
+  }
+
+  .product-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #toggle-menu {
+    visibility: hidden;
+  }
+
+  .previous-arrow,
+  .next-arrow {
+    visibility: hidden;
+  }
+}

@@ -11,6 +11,7 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <link rel="stylesheet" href="styles.css" />
 
     <title>Frontend Mentor | E-commerce product page</title>
 
@@ -26,16 +27,112 @@
     </style>
   </head>
   <body>
-    Collections Men Women About Contact Sneaker Company Fall Limited Edition
-    Sneakers These low-profile sneakers are your perfect casual wear companion.
-    Featuring a durable rubber outer sole, they’ll withstand everything the
-    weather can offer. $125.00 50% $250.00 0 Add to cart
+    <nav>
+      <div id="mobile-nav-active"></div>
+      <div class="nav-titles nav-titles-unvisible">
+        <ul>
+          <li>
+            <button id="close-button" class="close-button">
+              <img src="images/icon-close.svg" alt="close button" />
+            </button>
+          </li>
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+          <li><a onclick="return alertInfo()" href="#">Collections</a></li>
+          <li><a onclick="return alertInfo()" href="#">Men</a></li>
+          <li><a onclick="return alertInfo()" href="#">Women</a></li>
+          <li></li>
+          <li><a onclick="return alertInfo()" href="#">About</a></li>
+          <li></li>
+          <li><a onclick="return alertInfo()" href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="container">
+        <div>
+          <button id="toggle-menu">
+            <img
+              class="toggle-menu-visible toggle-menu-unvisible"
+              src="images/icon-menu.svg"
+              alt="toggle menu"
+            />
+          </button>
+
+          <h1>
+            <img class="logo" src="images/logo.svg" alt="logo" />
+          </h1>
+        </div>
+
+        <div>
+          <img
+            class="shopping-cart"
+            src="images/icon-cart.svg"
+            alt="shopping cart"
+          />
+          <img class="avatar" src="images/image-avatar.png" alt="avatar" />
+        </div>
+      </div>
+      <hr />
+      <!-- TODO: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog -->
+    </nav>
+
+    <section class="section-img">
+      <div class="container-img">
+        <img
+          class="product-main-img"
+          src="images/image-product-1.jpg"
+          alt="product image"
+        />
+        <div class="previous-arrow">
+          <button>
+            <img src="images/icon-previous.svg" alt="previous-arrow" />
+          </button>
+        </div>
+
+        <div class="next-arrow">
+          <button>
+            <img src="images/icon-next.svg" alt="next-arrow" />
+          </button>
+        </div>
+      </div>
+
+      <div class="container-product-info">
+        <p class="company-name">Sneaker Company</p>
+        <h2>Fall Limited Edition Sneakers</h2>
+        <p class="product-info-text">
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they’ll withstand everything
+          the weather can offer.
+        </p>
+        <div class="product-price">
+          <div>
+            <p class="new-price">$125.00 <span class="discount">50%</span></p>
+          </div>
+          <div>
+            <p class="old-price">$250.00</p>
+          </div>
+        </div>
+
+        <div id="outer">
+          <!-- https://stackoverflow.com/questions/21376788/how-to-display-3-buttons-on-the-same-line-in-css -->
+          <div class="inner"><button class="minus-button">−</button></div>
+          <div class="inner pruduct-quantity">0</div>
+          <div class="inner"><button class="plus-button">+</button></div>
+        </div>
+        <button class="add-to-cart-button">
+          <img src="images/icon-cart.svg" alt="shopping cart" />
+          Add to cart
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/sklehti" target="_blank">Saara Lehtinen</a>.
+      </div>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
