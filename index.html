@@ -61,34 +61,60 @@
           </h1>
         </div>
 
-        <div>
-          <img
-            class="shopping-cart"
-            src="images/icon-cart.svg"
-            alt="shopping cart"
-          />
+        <div class="shopping-info">
+          <div>
+            <div id="shopping-quantity" class="shopping-quantity-unvisible">
+              0
+            </div>
+            <button id="shopping-cart">
+              <img src="images/icon-cart.svg" alt="shopping cart" />
+            </button>
+          </div>
+
           <img class="avatar" src="images/image-avatar.png" alt="avatar" />
         </div>
       </div>
-      <hr />
+      <hr class="nav-hr" />
       <!-- TODO: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog -->
+      <dialog id="empty-basket">
+        <div id="modal-div">
+          <p class="dialog-title">Cart</p>
+
+          <hr id="dialog-hr" />
+          <div
+            id="dialog-text-empty"
+            class="dialog-text-empty dialog-text-empty-unvisible"
+          >
+            <p>Your cart is empty.</p>
+          </div>
+
+          <div
+            id="dialog-text"
+            class="dialog-text-filled dialog-text-filled-unvisible"
+          >
+            <ul id="order-products"></ul>
+            <button onclick="alertInfo()" id="dialog-btn">Checkout</button>
+          </div>
+        </div>
+      </dialog>
     </nav>
 
     <section class="section-img">
-      <div class="container-img">
+      <div id="container-img" class="container-img">
         <img
+          id="carousel-img"
           class="product-main-img"
           src="images/image-product-1.jpg"
           alt="product image"
         />
         <div class="previous-arrow">
-          <button>
+          <button id="previous-arrow">
             <img src="images/icon-previous.svg" alt="previous-arrow" />
           </button>
         </div>
 
         <div class="next-arrow">
-          <button>
+          <button id="next-arrow">
             <img src="images/icon-next.svg" alt="next-arrow" />
           </button>
         </div>
@@ -96,7 +122,7 @@
 
       <div class="container-product-info">
         <p class="company-name">Sneaker Company</p>
-        <h2>Fall Limited Edition Sneakers</h2>
+        <h2 id="product-title">Fall Limited Edition Sneakers</h2>
         <p class="product-info-text">
           These low-profile sneakers are your perfect casual wear companion.
           Featuring a durable rubber outer sole, they’ll withstand everything
@@ -104,7 +130,9 @@
         </p>
         <div class="product-price">
           <div>
-            <p class="new-price">$125.00 <span class="discount">50%</span></p>
+            <p class="new-price" id="product-price">
+              $125.00 <span class="discount">50%</span>
+            </p>
           </div>
           <div>
             <p class="old-price">$250.00</p>
@@ -113,11 +141,16 @@
 
         <div id="outer">
           <!-- https://stackoverflow.com/questions/21376788/how-to-display-3-buttons-on-the-same-line-in-css -->
-          <div class="inner"><button class="minus-button">−</button></div>
-          <div class="inner pruduct-quantity">0</div>
-          <div class="inner"><button class="plus-button">+</button></div>
+          <div class="inner">
+            <button id="minus-btn" class="minus-button">−</button>
+          </div>
+          <div id="pruduct-quantity" class="inner pruduct-quantity">0</div>
+          <div class="inner">
+            <button id="plus-btn" class="plus-button">+</button>
+          </div>
         </div>
-        <button class="add-to-cart-button">
+        <button onclick="addBasket()" class="add-to-cart-button">
+          <!-- TODO: TEE TÄHÄN TOIMINTA -->
           <img src="images/icon-cart.svg" alt="shopping cart" />
           Add to cart
         </button>

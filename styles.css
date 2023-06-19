@@ -36,12 +36,34 @@ nav h1 {
   color: #000;
 }
 
-.shopping-cart {
-  padding: 0 4vw;
+.shopping-info {
+  display: flex;
+  flex-direction: row;
+}
+
+#shopping-cart {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+#shopping-quantity {
+  position: absolute;
+  background-color: hsl(26, 77%, 61%);
+  color: #fff;
+  font-size: 11px;
+  margin: -7px 0 0 20px;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+
+.shopping-quantity-unvisible {
+  visibility: hidden;
 }
 
 .avatar {
   height: 40px;
+  margin: 0 3vw;
 }
 
 .company-name {
@@ -133,6 +155,97 @@ nav h1 {
   margin: 0 13px -2px 0;
 }
 
+#modal-button {
+  width: 100vw;
+  height: 100vh;
+}
+
+dialog {
+  padding: 0;
+}
+
+dialog p {
+  padding: 0 20px;
+}
+
+.dialog-hr {
+  padding: 0;
+  margin: 0;
+  height: 1px;
+  background-color: #e8e6e6;
+  border: none;
+}
+
+#empty-basket {
+  width: 90vw;
+  height: 60vh;
+  border: none;
+  border-radius: 10px;
+}
+
+.dialog-title {
+  padding: 2vh 20px;
+  font-weight: bold;
+}
+
+.dialog-text-empty {
+  padding: 17vh 0;
+  text-align: center;
+}
+
+.dialog-text-empty-unvisible {
+  display: none;
+}
+
+.dialog-text-filled {
+  padding: 6vh;
+}
+
+#dialog-text-filled {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dialog-text-filled-unvisible {
+  display: none;
+}
+
+.basket-img {
+  width: 15%;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.basket-text {
+  display: flex;
+  flex-direction: row;
+  line-height: 150%;
+  color: hsl(219, 9%, 45%);
+}
+
+.delete-basket {
+  padding: 5% 0;
+  cursor: pointer;
+}
+
+#dialog-btn {
+  width: 100%;
+  height: 10vh;
+  border-radius: 10px;
+  border: none;
+  background-color: hsl(26, 100%, 55%);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#order-products {
+  height: 100px;
+  padding: 0;
+  margin: 0;
+}
+
 /* mobile view */
 @media only screen and (max-width: 1440px) {
   .mobile-nav-active {
@@ -186,7 +299,7 @@ nav h1 {
     height: 16px;
   }
 
-  nav hr {
+  .nav-hr {
     visibility: hidden;
   }
 
