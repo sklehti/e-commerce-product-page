@@ -132,6 +132,7 @@ nav h1 {
   font-size: 25px;
   font-weight: 600;
   color: hsl(26, 100%, 55%);
+  cursor: pointer;
 }
 
 .add-to-cart-button {
@@ -189,7 +190,7 @@ dialog p {
 }
 
 .dialog-text-empty {
-  padding: 17vh 0;
+  padding: 10vh 0;
   text-align: center;
 }
 
@@ -238,11 +239,12 @@ dialog p {
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+  margin-top: 50px;
 }
 
 #order-products {
   height: 100px;
-  padding: 0;
+  padding: 0px;
   margin: 0;
 }
 

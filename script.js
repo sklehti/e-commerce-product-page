@@ -204,7 +204,7 @@ function shoppingBag() {
     ).toFixed(2)}</spam></div>
                 </div>
               </div>
-              <div onclick="alertInfo()" class="delete-basket" >
+              <div onclick="emptingBasket()" class="delete-basket" >
                 <img src=${"images/icon-delete.svg"} alt="delete item"/>
               </div>
             </li>`;
@@ -256,4 +256,15 @@ function addBasket() {
   }
 
   pruductQuantity.innerHTML = 0;
+}
+
+function emptingBasket() {
+  shoppingQuantity.innerHTML = 0;
+  pruductQuantity.innerHTML = 0;
+
+  addBasket();
+
+  dialogTextEmpty.classList.remove("dialog-text-empty-unvisible");
+  dialogTextEmpty.classList.add("dialog-text-empty");
+  dialogText.classList.add("dialog-text-filled-unvisible");
 }
