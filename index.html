@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
     <link
       rel="icon"
@@ -29,36 +28,38 @@
   <body>
     <nav>
       <div id="mobile-nav-active"></div>
-      <div class="nav-titles nav-titles-unvisible">
-        <ul>
-          <li>
-            <button id="close-button" class="close-button">
-              <img src="images/icon-close.svg" alt="close button" />
-            </button>
-          </li>
 
-          <li><a onclick="return alertInfo()" href="#">Collections</a></li>
-          <li><a onclick="return alertInfo()" href="#">Men</a></li>
-          <li><a onclick="return alertInfo()" href="#">Women</a></li>
-          <li></li>
-          <li><a onclick="return alertInfo()" href="#">About</a></li>
-          <li></li>
-          <li><a onclick="return alertInfo()" href="#">Contact</a></li>
-        </ul>
-      </div>
       <div class="container">
-        <div>
-          <button id="toggle-menu">
-            <img
-              class="toggle-menu-visible toggle-menu-unvisible"
-              src="images/icon-menu.svg"
-              alt="toggle menu"
-            />
-          </button>
+        <div id="all-titles">
+          <div>
+            <button id="toggle-menu">
+              <img
+                class="toggle-menu-visible toggle-menu-unvisible"
+                src="images/icon-menu.svg"
+                alt="toggle menu"
+              />
+            </button>
 
-          <h1>
-            <img class="logo" src="images/logo.svg" alt="logo" />
-          </h1>
+            <h1>
+              <img class="logo" src="images/logo.svg" alt="logo" />
+            </h1>
+          </div>
+
+          <div class="nav-titles nav-titles-unvisible">
+            <ul>
+              <li>
+                <button id="close-button" class="close-button">
+                  <img src="images/icon-close.svg" alt="close button" />
+                </button>
+              </li>
+
+              <li><a onclick="return alertInfo()" href="#">Collections</a></li>
+              <li><a onclick="return alertInfo()" href="#">Men</a></li>
+              <li><a onclick="return alertInfo()" href="#">Women</a></li>
+              <li><a onclick="return alertInfo()" href="#">About</a></li>
+              <li><a onclick="return alertInfo()" href="#">Contact</a></li>
+            </ul>
+          </div>
         </div>
 
         <div class="shopping-info">
@@ -75,7 +76,7 @@
         </div>
       </div>
       <hr class="nav-hr" />
-      <!-- TODO: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog -->
+
       <dialog id="empty-basket">
         <div id="modal-div">
           <p class="dialog-title">Cart</p>
@@ -107,6 +108,11 @@
           src="images/image-product-1.jpg"
           alt="product image"
         />
+
+        <div class="selected-product-images">
+          <ul id="selected-product-images"></ul>
+        </div>
+
         <div class="previous-arrow">
           <button id="previous-arrow">
             <img src="images/icon-previous.svg" alt="previous-arrow" />
@@ -139,21 +145,23 @@
           </div>
         </div>
 
-        <div id="outer">
-          <!-- https://stackoverflow.com/questions/21376788/how-to-display-3-buttons-on-the-same-line-in-css -->
-          <div class="inner">
-            <button id="minus-btn" class="minus-button">−</button>
+        <div class="addition-buttons">
+          <div id="outer">
+            <div class="inner">
+              <button id="minus-btn" class="minus-button">−</button>
+            </div>
+            <div id="pruduct-quantity" class="inner pruduct-quantity">0</div>
+            <div class="inner">
+              <button id="plus-btn" class="plus-button">+</button>
+            </div>
           </div>
-          <div id="pruduct-quantity" class="inner pruduct-quantity">0</div>
-          <div class="inner">
-            <button id="plus-btn" class="plus-button">+</button>
+          <div class="add-to-cart-button-div">
+            <button onclick="addBasket()" class="add-to-cart-button">
+              <img src="images/icon-cart.svg" alt="shopping cart" />
+              Add to cart
+            </button>
           </div>
         </div>
-        <button onclick="addBasket()" class="add-to-cart-button">
-          <!-- TODO: TEE TÄHÄN TOIMINTA -->
-          <img src="images/icon-cart.svg" alt="shopping cart" />
-          Add to cart
-        </button>
       </div>
     </section>
 

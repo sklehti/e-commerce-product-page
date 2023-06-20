@@ -19,7 +19,7 @@ nav {
 }
 
 .container {
-  padding: 20px 10vw 0 6vw;
+  padding: 20px 7vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,6 +33,10 @@ nav h1 {
 
 .nav-titles a {
   text-decoration: none;
+  color: #000;
+}
+
+.nav-titles a:active {
   color: #000;
 }
 
@@ -59,11 +63,6 @@ nav h1 {
 
 .shopping-quantity-unvisible {
   visibility: hidden;
-}
-
-.avatar {
-  height: 40px;
-  margin: 0 3vw;
 }
 
 .company-name {
@@ -112,6 +111,7 @@ nav h1 {
   background-color: hsl(223, 64%, 98%);
   border-radius: 10px;
   margin: 10px 0;
+  height: 45px;
 }
 
 .inner {
@@ -126,7 +126,8 @@ nav h1 {
 .minus-button,
 .plus-button {
   background-color: hsl(223, 64%, 98%);
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 0 20px;
   border-radius: 10px;
   border: none;
   font-size: 25px;
@@ -138,7 +139,7 @@ nav h1 {
 .add-to-cart-button {
   width: 100%;
   margin: 10px 0 100px;
-  padding: 20px;
+  padding: 0 20px;
   border-radius: 10px;
   border: none;
   font-size: 18px;
@@ -147,6 +148,7 @@ nav h1 {
   color: hsl(25, 100%, 94%);
   text-align: center;
   box-shadow: 0 20px 38px hsl(26, 100%, 89%);
+  height: 45px;
 }
 
 .add-to-cart-button img {
@@ -175,13 +177,6 @@ dialog p {
   height: 1px;
   background-color: #e8e6e6;
   border: none;
-}
-
-#empty-basket {
-  width: 90vw;
-  height: 60vh;
-  border: none;
-  border-radius: 10px;
 }
 
 .dialog-title {
@@ -213,8 +208,6 @@ dialog p {
 }
 
 .basket-img {
-  width: 15%;
-  height: 15%;
   border-radius: 5px;
   margin-right: 15px;
 }
@@ -233,14 +226,12 @@ dialog p {
 
 #dialog-btn {
   width: 100%;
-  height: 10vh;
   border-radius: 10px;
   border: none;
   background-color: hsl(26, 100%, 55%);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
-  margin-top: 50px;
 }
 
 #order-products {
@@ -249,23 +240,19 @@ dialog p {
   margin: 0;
 }
 
-/* mobile view */
-@media only screen and (max-width: 1440px) {
-  .mobile-nav-active {
-    position: absolute;
-    z-index: 1;
-    opacity: 0.8;
-    background-color: black;
-    height: 100vh;
-    width: 100vw;
-  }
+.product-main-img {
+  width: 100%;
+}
 
+/* mobile view */
+@media only screen and (max-width: 1200px) {
   .nav-titles {
     position: absolute;
     height: 100vh;
     background-color: #fff;
     width: 80vw;
     z-index: 10;
+    left: 0;
   }
 
   .close-button {
@@ -306,8 +293,22 @@ dialog p {
     visibility: hidden;
   }
 
+  #empty-basket {
+    width: 90vw;
+    min-height: 50vh;
+    border: none;
+    border-radius: 10px;
+    height: fit-content;
+  }
+
+  #dialog-btn {
+    height: 10vh;
+    margin-top: 50px;
+  }
+
   .avatar {
     height: 25px;
+    padding-left: 2vw;
   }
 
   .basket-img {
@@ -323,10 +324,6 @@ dialog p {
     position: relative;
     display: flex;
     align-items: center;
-  }
-
-  .product-main-img {
-    width: 100%;
   }
 
   .previous-arrow button img,
@@ -350,12 +347,10 @@ dialog p {
 
   .previous-arrow {
     position: absolute;
-    /* z-index: 5; */
   }
 
   .next-arrow {
     position: absolute;
-    /* z-index: 5; */
     right: 0px;
   }
 
@@ -369,15 +364,186 @@ dialog p {
     justify-content: space-between;
     align-items: center;
   }
+
+  #selected-product-images {
+    /* visibility: hidden; */
+    display: none;
+  }
 }
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1200px) {
+  .container {
+    padding: 40px 10vw;
+  }
+
   #toggle-menu {
-    visibility: hidden;
+    display: none;
+  }
+
+  .close-button {
+    display: none;
+  }
+
+  #all-titles {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav-titles ul {
+    list-style-type: none;
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 0px;
+  }
+
+  .nav-titles a {
+    text-decoration: none;
+    color: hsl(219, 9%, 45%);
+    padding: 0 10px;
+  }
+
+  .nav-hr {
+    margin: 0px 10vw;
+  }
+
+  #empty-basket {
+    width: 340px;
+    border: none;
+    border-radius: 10px;
+    height: fit-content;
+    margin-right: 100px;
+    margin-top: 100px;
+  }
+
+  .basket-img {
+    width: 45px;
+    height: 45px;
+  }
+
+  dialog p {
+    padding: 0;
+  }
+
+  .dialog-title {
+    padding: 5px 20px;
+  }
+
+  .dialog-text-empty {
+    padding: 5vh 0;
+    text-align: center;
+  }
+
+  .dialog-text-filled {
+    padding: 20px;
+  }
+
+  #order-products {
+    height: 80px;
+    padding: 0px;
+    margin: 0;
+  }
+
+  #dialog-btn {
+    height: 50px;
+    margin-top: 0px;
+  }
+
+  .section-img {
+    display: flex;
+    flex-direction: row;
+    padding: 150px 20vw;
+  }
+
+  .avatar {
+    height: 40px;
+    margin-top: -10px;
+    padding-left: 40px;
+  }
+
+  .product-main-img {
+    border-radius: 10px;
+  }
+
+  .container-product-info {
+    padding-top: 2vw;
+    margin-left: 3vw;
+  }
+
+  .container-img {
+    padding-top: 1vw 0;
+    margin-right: 3vw;
+  }
+
+  .addition-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .add-to-cart-button-div {
+    margin-left: 20px;
+    width: 100%;
   }
 
   .previous-arrow,
   .next-arrow {
     visibility: hidden;
   }
+
+  .selected-product-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+  }
+
+  #selected-product-images {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #selected-product-images li {
+    margin: 10px;
+  }
+
+  #selected-product-images button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+  }
+
+  #selected-product-images img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #selected-product-images button:focus {
+    border: 2px solid hsl(26, 100%, 55%);
+  }
+
+  .thumbnail-img-lighter {
+    opacity: 0.5;
+  }
+
+  .thumbnail-img {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
 }
