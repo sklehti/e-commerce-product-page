@@ -15,7 +15,12 @@ Users should be able to:
 
 ### Screenshot
 
+Mobile view:
+
 ![Mobile view](./images/mobile-view.png)
+
+Desktop view:
+
 ![Mobile view](./images/desktop-view.png)
 
 ### Links

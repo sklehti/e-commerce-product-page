@@ -497,7 +497,7 @@ dialog p {
   .section-img {
     display: flex;
     flex-direction: row;
-    padding: 150px 20vw;
+    padding: 150px 20vw 0 20vw;
   }
 
   .avatar {
