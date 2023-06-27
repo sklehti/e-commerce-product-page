@@ -339,6 +339,7 @@ dialog p {
     border: none;
     border-radius: 10px;
     height: fit-content;
+    margin-top: 90px;
   }
 
   #dialog-btn {
