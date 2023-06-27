@@ -14,7 +14,6 @@
 
     <title>Frontend Mentor | E-commerce product page</title>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
       .attribution {
         font-size: 11px;
@@ -53,11 +52,27 @@
                 </button>
               </li>
 
-              <li><a onclick="return alertInfo()" href="#">Collections</a></li>
-              <li><a onclick="return alertInfo()" href="#">Men</a></li>
-              <li><a onclick="return alertInfo()" href="#">Women</a></li>
-              <li><a onclick="return alertInfo()" href="#">About</a></li>
-              <li><a onclick="return alertInfo()" href="#">Contact</a></li>
+              <li id="collections-title">
+                <a onclick="return alertInfo()" href="#">Collections</a>
+                <hr class="hr-collections" />
+              </li>
+              <li id="men-title">
+                <a onclick="return alertInfo()" href="#">Men</a>
+                <hr class="hr-men" />
+              </li>
+
+              <li id="women-title">
+                <a onclick="return alertInfo()" href="#">Women</a>
+                <hr class="hr-women" />
+              </li>
+              <li id="about-title">
+                <a onclick="return alertInfo()" href="#">About</a>
+                <hr class="hr-about" />
+              </li>
+              <li id="contact-title">
+                <a onclick="return alertInfo()" href="#">Contact</a>
+                <hr class="hr-contact" />
+              </li>
             </ul>
           </div>
         </div>
@@ -101,6 +116,36 @@
     </nav>
 
     <section class="section-img">
+      <dialog id="main-modal">
+        <button id="modal-close-btn">X</button>
+        <div id="modal-container-img" class="container-img">
+          <img
+            id="modal-carousel-img"
+            class="product-main-img"
+            src="images/image-product-1.jpg"
+            alt="product image"
+          />
+
+          <div id="modal-small-images" class="selected-product-images">
+            <ul id="modal-selected-product-images"></ul>
+          </div>
+
+          <div id="modal-arrows" class="arrows-unvisible">
+            <div class="previous-arrow">
+              <button id="modal-previous-arrow">
+                <img src="images/icon-previous.svg" alt="previous-arrow" />
+              </button>
+            </div>
+
+            <div class="next-arrow">
+              <button id="modal-next-arrow">
+                <img src="images/icon-next.svg" alt="next-arrow" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
       <div id="container-img" class="container-img">
         <img
           id="carousel-img"
@@ -109,20 +154,22 @@
           alt="product image"
         />
 
-        <div class="selected-product-images">
+        <div id="small-images" class="selected-product-images">
           <ul id="selected-product-images"></ul>
         </div>
 
-        <div class="previous-arrow">
-          <button id="previous-arrow">
-            <img src="images/icon-previous.svg" alt="previous-arrow" />
-          </button>
-        </div>
+        <div id="main-modal-arrows" class="arrows-unvisible">
+          <div class="previous-arrow">
+            <button id="previous-arrow">
+              <img src="images/icon-previous.svg" alt="previous-arrow" />
+            </button>
+          </div>
 
-        <div class="next-arrow">
-          <button id="next-arrow">
-            <img src="images/icon-next.svg" alt="next-arrow" />
-          </button>
+          <div class="next-arrow">
+            <button id="next-arrow">
+              <img src="images/icon-next.svg" alt="next-arrow" />
+            </button>
+          </div>
         </div>
       </div>
 

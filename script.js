@@ -4,6 +4,7 @@ const elements = document.getElementsByClassName("nav-titles");
 const emptyBasket = document.getElementById("empty-basket");
 const shoppingCart = document.getElementById("shopping-cart");
 const carouselImg = document.getElementById("carousel-img");
+const modalCarouselImg = document.getElementById("modal-carousel-img");
 const previousArrow = document.getElementById("previous-arrow");
 const nextArrow = document.getElementById("next-arrow");
 let pruductQuantity = document.getElementById("pruduct-quantity");
@@ -21,21 +22,27 @@ const orderProducts = document.getElementById("order-products");
 const selectedProductImages = document.getElementById(
   "selected-product-images"
 );
+const modalSelectedProductImages = document.getElementById(
+  "modal-selected-product-images"
+);
+const containerImg = document.getElementById("container-img");
+
+const mainModal = document.getElementById("main-modal");
 
 // img variables
 const images = [
-  "images/image-product-1.jpg",
-  "images/image-product-2.jpg",
-  "images/image-product-3.jpg",
-  "images/image-product-4.jpg",
+  { file: "images/image-product-1.jpg", id: 1 },
+  { file: "images/image-product-2.jpg", id: 2 },
+  { file: "images/image-product-3.jpg", id: 3 },
+  { file: "images/image-product-4.jpg", id: 4 },
 ];
 
 // thumbnail images
 const thumbnailImages = [
-  "images/image-product-1-thumbnail.jpg",
-  "images/image-product-2-thumbnail.jpg",
-  "images/image-product-3-thumbnail.jpg",
-  "images/image-product-4-thumbnail.jpg",
+  { file: "images/image-product-1-thumbnail.jpg", id: 1 },
+  { file: "images/image-product-2-thumbnail.jpg", id: 2 },
+  { file: "images/image-product-3-thumbnail.jpg", id: 3 },
+  { file: "images/image-product-4-thumbnail.jpg", id: 4 },
 ];
 
 let allProducts = [];
@@ -43,29 +50,27 @@ let allProducts = [];
 previousArrow.addEventListener("click", function () {
   const imgNow = carouselImg.src;
 
-  changePreviousimage(imgNow);
+  changePreviousimage(imgNow, carouselImg);
 });
 
 nextArrow.addEventListener("click", function () {
   const imgNow = carouselImg.src;
 
-  changeNextimage(imgNow);
+  changeNextimage(imgNow, carouselImg);
 });
 
 /**
  * carousel show previous image
  */
-function changePreviousimage(imgNow) {
-  const relativeFileAddress = imgNow.split("images")[1];
-
+function changePreviousimage(imgNow, mainImg) {
   for (i = images.length - 1; i >= 0; i--) {
-    const activeImg = images[i].includes(relativeFileAddress);
+    const activeImg = imgNow.includes(images[i].file);
 
     if (activeImg) {
       if (i === 0) {
         i = images.length;
       }
-      carouselImg.src = images[i - 1];
+      mainImg.src = images[i - 1].file;
 
       break;
     }
@@ -75,18 +80,16 @@ function changePreviousimage(imgNow) {
 /**
  * carousel show next image
  */
-function changeNextimage(imgNow) {
-  const relativeFileAddress = imgNow.split("images")[1];
-
+function changeNextimage(imgNow, mainImg) {
   for (i = 0; i < images.length; i++) {
-    const activeImg = images[i].includes(relativeFileAddress);
+    const activeImg = imgNow.includes(images[i].file);
 
     if (activeImg) {
       if (i === images.length - 1) {
         i = -1;
       }
 
-      carouselImg.src = images[i + 1];
+      mainImg.src = images[i + 1].file;
 
       break;
     }
@@ -94,14 +97,14 @@ function changeNextimage(imgNow) {
 }
 
 toggleMenu.addEventListener("click", function () {
-  for (var i = 0; i < elements.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     elements[i].classList.remove("nav-titles-unvisible");
     elements[i].classList.add("nav-titles");
   }
 });
 
 closeButton.addEventListener("click", function () {
-  for (var i = 0; i < elements.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     elements[i].classList.add("nav-titles-unvisible");
   }
 });
@@ -145,11 +148,10 @@ plusBtn.addEventListener("click", function () {
 
 function shoppingBag() {
   const orderProductsList = allProducts.map((p) => {
-    return `<li id="dialog-text-filled">
+    return `
+            <li id="dialog-text-filled">
               <div class="basket-text" >
-                  <img class="basket-img"  src=images/${
-                    p.img
-                  } alt="product image"/>
+                  <img class="basket-img"  src=${p.img} alt="product image"/>
                 <div>
                   <div>${p.name}</div>
                   <div>${p.price} x ${
@@ -160,9 +162,10 @@ function shoppingBag() {
                 </div>
               </div>
               <div onclick="emptingBasket()" class="delete-basket" >
-                <img src=${"images/icon-delete.svg"} alt="delete item"/>
+                <img src="images/icon-delete.svg" alt="delete item"/>
               </div>
-            </li>`;
+            </li>
+          `;
   });
 
   const orderProductsHTML = orderProductsList.join("");
@@ -178,7 +181,13 @@ function addBasket() {
   let priceNow = price.innerHTML.split("<")[0];
   priceNow = priceNow.trim();
 
-  const basketImg = carouselImg.src.split("images")[1];
+  let basketImg;
+
+  images.map((img) => {
+    if (carouselImg.src.includes(img.file)) {
+      basketImg = img.file;
+    }
+  });
 
   if (!productExist) {
     allProducts = [
@@ -224,33 +233,169 @@ function emptingBasket() {
   dialogText.classList.add("dialog-text-filled-unvisible");
 }
 
-function selectedIamges() {
-  const selectedProductImg = thumbnailImages.map((p, index) => {
-    return `<li><button id="${index + 1}-thumbnail"><img id="${
-      index + 1
-    }-thumbnail-img" class=" thumbnail-img-lighter thumbnail-img" src="${p}"/></button></>`;
+function thumbnailImagesView(id) {
+  const selectedProductImg = thumbnailImages.map((p) => {
+    if (Number(id) === Number(p.id)) {
+      return `
+      <li>
+        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" ><img id="thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
+        </button> 
+      </> 
+    `;
+    } else {
+      return `
+      <li>
+        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" ><img id="thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
+        </button> 
+      </> 
+    `;
+    }
   });
   const orderImagesHTML = selectedProductImg.join("");
   selectedProductImages.innerHTML = orderImagesHTML;
 }
 
-selectedIamges();
+thumbnailImagesView(1);
 
 selectedProductImages.addEventListener("click", function (event) {
   const button = event.target.closest("button");
-
   if (!button) return;
-  thumbnailImages.map((p, index) => {
-    document
-      .getElementById(`${index + 1}-thumbnail-img`)
-      .classList.add("thumbnail-img");
+
+  const imgId = button.id.split("-")[1];
+
+  if (imgId) {
+    thumbnailImagesView(imgId);
+    images.map((p) => {
+      if (Number(imgId) === Number(p.id)) {
+        carouselImg.src = p.file;
+      }
+    });
+  }
+});
+
+/* Main modal open and close actions */
+const mainModalImg = mainModal.querySelector("#modal-carousel-img");
+
+carouselImg.addEventListener("click", function () {
+  mainModalImg.src = carouselImg.src;
+
+  images.map((p) => {
+    if (mainModalImg.src.includes(p.file)) {
+      console.log(p.id, "src");
+      modalThumbnailImagesView(p.id);
+    }
+  });
+  mainModal.showModal();
+
+  document.getElementById("modal-arrows").classList.remove("arrows-unvisible");
+});
+
+document
+  .getElementById("modal-close-btn")
+  .addEventListener("click", function () {
+    mainModal.close();
   });
 
-  const imgId = button.id.split("-")[0];
+/* Main modal actions */
+const mainModalActions = mainModal.querySelector(
+  "#modal-selected-product-images"
+);
+
+mainModalActions.addEventListener("click", function (event) {
+  const button = event.target.closest("button");
+
+  if (!button) return;
+
+  const imgIdModal = button.id.split("-")[2];
+  if (imgIdModal) {
+    console.log(imgIdModal, "fff");
+    modalThumbnailImagesView(imgIdModal);
+
+    mainModalImg.src = `images/image-product-${imgIdModal}.jpg`;
+  }
+});
+
+/* Main modal arrow actions */
+const mainPreviousArrow = mainModal.querySelector("#modal-previous-arrow");
+const mainNextArrow = mainModal.querySelector("#modal-next-arrow");
+
+mainPreviousArrow.addEventListener("click", function (event) {
+  const imgNow = mainModalImg.src;
+
+  let imgIdPrev = 0;
+
+  images.map((img) => {
+    if (imgNow.includes(img.file)) {
+      imgIdPrev = img.id;
+    }
+  });
+
+  if (Number(imgIdPrev) === 1) {
+    imgIdPrev = images.length;
+  } else {
+    imgIdPrev = Number(imgIdPrev) - 1;
+  }
+
+  modalThumbnailImagesView(imgIdPrev);
+
+  changePreviousimage(imgNow, mainModalImg);
+});
+
+mainNextArrow.addEventListener("click", function () {
+  const imgNow = mainModalImg.src;
+  let imgIdNext = 0;
+
+  images.map((img) => {
+    if (imgNow.includes(img.file)) {
+      imgIdNext = img.id;
+    }
+  });
+
+  if (Number(imgIdNext) === images.length) {
+    imgIdNext = 1;
+  } else {
+    imgIdNext = Number(imgIdNext) + 1;
+  }
+
+  modalThumbnailImagesView(imgIdNext);
+  changeNextimage(imgNow, mainModalImg);
+});
+
+function modalThumbnailImagesView(id) {
+  const selectedProductImg = thumbnailImages.map((p) => {
+    if (Number(id) === Number(p.id)) {
+      return `
+      <li>
+        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" ><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
+        </button> 
+      </> 
+    `;
+    } else {
+      return `
+      <li>
+        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" ><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
+        </button> 
+      </> 
+    `;
+    }
+  });
+  const orderImagesHTML = selectedProductImg.join("");
+  modalSelectedProductImages.innerHTML = orderImagesHTML;
+}
+
+modalSelectedProductImages.addEventListener("click", function (event) {
+  const button = event.target.closest("button");
+  if (!button) return;
+  console.log("tullaanhan");
+
+  const imgId = button.id.split("-")[2];
+
   if (imgId) {
-    document
-      .getElementById(`${imgId}-thumbnail-img`)
-      .classList.remove("thumbnail-img");
-    carouselImg.src = `images/image-product-${imgId}.jpg`;
+    modalThumbnailImagesView(imgId);
+    images.map((p) => {
+      if (Number(imgId) === Number(p.id)) {
+        modalCarouselImg.src = p.file;
+      }
+    });
   }
 });
