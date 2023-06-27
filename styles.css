@@ -270,11 +270,13 @@ dialog p {
 .previous-arrow {
   position: absolute;
   left: 0px;
+  bottom: 45vw;
 }
 
 .next-arrow {
   position: absolute;
   right: 0px;
+  bottom: 45vw;
 }
 
 /* mobile view */
