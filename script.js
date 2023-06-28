@@ -238,14 +238,14 @@ function thumbnailImagesView(id) {
     if (Number(id) === Number(p.id)) {
       return `
       <li>
-        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" ><img id="thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
+        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" title="thumbnail image"><img id="thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
         </button> 
       </> 
     `;
     } else {
       return `
       <li>
-        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" ><img id="thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
+        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" title="thumbnail image"><img id="thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
         </button> 
       </> 
     `;
@@ -366,14 +366,14 @@ function modalThumbnailImagesView(id) {
     if (Number(id) === Number(p.id)) {
       return `
       <li>
-        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" ><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
+        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" title="thumbnail image"><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
         </button> 
       </> 
     `;
     } else {
       return `
       <li>
-        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" ><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
+        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" title="thumbnail image"><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
         </button> 
       </> 
     `;
@@ -386,7 +386,6 @@ function modalThumbnailImagesView(id) {
 modalSelectedProductImages.addEventListener("click", function (event) {
   const button = event.target.closest("button");
   if (!button) return;
-  console.log("tullaanhan");
 
   const imgId = button.id.split("-")[2];
 
