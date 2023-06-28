@@ -238,14 +238,14 @@ function thumbnailImagesView(id) {
     if (Number(id) === Number(p.id)) {
       return `
       <li>
-        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" title="thumbnail image"><img id="thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
+        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" title="thumbnail image"><img id="thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}" alt="thumbnail-img-${p.id}"/> 
         </button> 
       </> 
     `;
     } else {
       return `
       <li>
-        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" title="thumbnail image"><img id="thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
+        <button id="thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" title="thumbnail image"><img id="thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}" alt="thumbnail-img-${p.id}"/> 
         </button> 
       </> 
     `;
@@ -366,14 +366,14 @@ function modalThumbnailImagesView(id) {
     if (Number(id) === Number(p.id)) {
       return `
       <li>
-        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" title="thumbnail image"><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}"/> 
+        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn-selected" title="thumbnail image"><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img-lighter" src="${p.file}" alt="thumbnail-img-${p.id}"/> 
         </button> 
       </> 
     `;
     } else {
       return `
       <li>
-        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" title="thumbnail image"><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}"/> 
+        <button id="modal-thumbnail-${p.id}" class="thumbnail-btn-all thumbnail-btn" title="thumbnail image"><img id="modal-thumbnail-img-${p.id}" class="thumbnail-img" src="${p.file}" alt="thumbnail-img-${p.id}"/> 
         </button> 
       </> 
     `;
