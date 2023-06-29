@@ -2,6 +2,18 @@
 
 This is a solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6).
 
+### Links
+
+- Live Site URL: [Site URL](https://e-commerce-product-page-xi.vercel.app/)
+
+### Built with
+
+- HTML
+- CSS
+- Javascript
+
+- Any libraries has not been used
+
 ### The challenge
 
 Users should be able to:
@@ -22,15 +34,3 @@ Mobile view:
 Desktop view:
 
 ![Mobile view](./images/desktop-view.png)
-
-### Links
-
-- Live Site URL: [Site URL](https://e-commerce-product-page-xi.vercel.app/)
-
-### Built with
-
-- HTML
-- CSS
-- Javascript
-
-- Any libraries has not been used
