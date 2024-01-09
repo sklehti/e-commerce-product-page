@@ -27,9 +27,8 @@ Users should be able to:
 
 # To run locally
 
-- npm install
-- npm start
-- Open the app on http://localhost:3000
+- copy index.html path
+- open this path in browser
 
 ### Screenshot
 
