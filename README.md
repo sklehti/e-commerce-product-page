@@ -25,6 +25,12 @@ Users should be able to:
 - Add items to the cart
 - View the cart and remove items from it
 
+# To run locally
+
+- npm install
+- npm start
+- Open the app on http://localhost:3000
+
 ### Screenshot
 
 Mobile view:
